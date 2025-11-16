@@ -1,66 +1,143 @@
-# YoRadio – Płytka PCB (v0.4)
+# YoRadio – PCB (v0.4) for SSD1322 display
 
-![PCB – widok 1](img/PCB1.jpg)
-![PCB – widok 2](img/PCB2.jpg)
+![PCB – view 1](img/PCB1.jpg)
+![PCB – view 2](img/PCB2.jpg)
 
-Projekt sprzętowy płytki drukowanej (PCB) dla YoRadio. Repozytorium zawiera kompletny projekt KiCad oraz gotowe pliki produkcyjne (Gerbery + wiercenia), a także zrzuty ekranu i zdjęcia płytki.
+Hardware project of a printed circuit board (PCB) for YoRadio. The repository contains the complete KiCad project and ready-to-fabricate files (Gerbers + drill), as well as screenshots and board photos.
 
-Status: stabilna wersja v0.4 (zestaw plików produkcyjnych w katalogu YR_v0.4 oraz archiwum YR_v0.4.zip)
+Status: stable v0.4 (fabrication files in the YR_v0.4 directory and the YR_v0.4.zip archive)
 
-## Opis
+Note: Polish version available in README.pl.md
 
-- Projekt dwuwarstwowej płytki drukowanej dla YoRadio.
-- Pliki KiCad pozwalają na edycję schematu i PCB oraz generowanie nowych wyjść produkcyjnych.
-- Do repozytorium dołączone są zdjęcia i zrzuty ekranu z projektu, a także lista elementów (BOM).
+## Table of Contents
+- Overview
+- Repository contents
+- Requirements and tools
+- Quick start (KiCad)
+- Fabrication files (Gerber/Drill)
+- Assembly (BOM, stencil)
+- Generating fabrication outputs
+- Previews
+- Versioning and backups
+- License and disclaimers
+- Contributing and issue reporting
 
-Uwaga: Plik `myoptions_0.4.h` to nagłówek konfiguracyjny oprogramowania/firmware, dołączony pomocniczo. Nie jest wymagany do samej produkcji PCB.
+## Overview
 
-## Zawartość repozytorium
+- Two-layer printed circuit board project for YoRadio.
+- KiCad files allow editing the schematic and PCB and generating new fabrication outputs.
+- The repository includes photos and screenshots of the project, as well as a Bill of Materials (BOM).
 
-Kluczowe pliki i katalogi:
-- Projekt KiCad:
-  - `YR.kicad_pro` – projekt KiCad
-  - `YR.kicad_sch` – schemat
-  - `YR.kicad_pcb` – płytka PCB
-  - `schematic.pdf` – schemat w formacie PDF (podgląd bez KiCada)
-- Produkcja (Gerber/Drill) – gotowe do wysyłki do fabryki:
-  - Katalog: `YR_v0.4/`
-  - Archiwum: `YR_v0.4.zip`
-- Lista elementów (BOM):
+Note: The `myoptions_0.4.h` file is a firmware/software configuration header, included for convenience. It is not required to fabricate the PCB itself.
+
+## Repository contents
+
+Key files and directories:
+- KiCad project:
+  - `YR.kicad_pro` — KiCad project
+  - `YR.kicad_sch` — schematic
+  - `YR.kicad_pcb` — PCB layout
+  - `schematic.pdf` — schematic in PDF format (view without KiCad)
+- Fabrication (Gerber/Drill) — ready to send to the PCB manufacturer:
+  - Directory: `YR_v0.4/`
+  - Archive: `YR_v0.4.zip`
+- Bill of Materials (BOM):
   - `YR.csv`
-- Modele/3D i grafika:
-  - `YR.wrl` – model 3D (podgląd w KiCad 3D Viewer)
-  - `img/` – zdjęcia i zrzuty ekranu (np. `PCB1.jpg`, `PCB2.jpg`)
+- Models/3D and graphics:
+  - `YR.wrl` — 3D model (KiCad 3D Viewer)
+  - `img/` — photos and screenshots (e.g., `PCB1.jpg`, `PCB2.jpg`)
+- Project backups:
+  - `YR-backups/` — automatic zip snapshots of the project
 
-Pozostałe:
-- `YR.kicad_prl` – ustawienia sesji/projektu
-- `myoptions_0.4.h` – plik konfiguracyjny firmware (pomocniczy)
+Other:
+- `fp-info-cache` — footprint cache
+- `YR.kicad_prl` — session/project settings
+- `myoptions_0.4.h` — firmware configuration file (auxiliary)
 
-## Wymagania i narzędzia
+## Requirements and tools
 
-- KiCad 9
+- KiCad 7/8 (latest stable release from series 7 or 8 recommended).
+- To generate Gerber/Drill files: KiCad’s built-in tools (Plot/Generate Drill Files).
+- Gerber viewer (e.g., KiCad’s built-in Gerber Viewer) — optional for verification.
 
-## Szybki start (KiCad)
+## Quick start (KiCad)
 
-1. Otwórz projekt: `YR.kicad_pro`.
-2. Przejrzyj schemat: `YR.kicad_sch` (lub `schematic.pdf` jeśli nie masz KiCada).
-3. Otwórz PCB: `YR.kicad_pcb` (sprawdź warstwy, reguły DRC).
-4. Podgląd 3D (opcjonalnie): View → 3D Viewer (model `YR.wrl`).
+1. Open the project: `YR.kicad_pro`.
+2. Review the schematic: `YR.kicad_sch` (or `schematic.pdf` if you don’t have KiCad).
+3. Open the PCB: `YR.kicad_pcb` (check layers and DRC rules).
+4. 3D preview (optional): View → 3D Viewer (model `YR.wrl`).
 
-## Pliki do produkcji (Gerber/Drill)
+## Fabrication files (Gerber/Drill)
 
-Gotowe do wysyłki do fabryki (wersja v0.4):
-- Katalog: `YR_v0.4/`
-- Archiwum: `YR_v0.4.zip` (zawiera te same pliki, wygodne do wgrania do wytwórni)
+Ready to send to the PCB manufacturer (version v0.4):
+- Directory: `YR_v0.4/`
+- Archive: `YR_v0.4.zip` (contains the same files, convenient to upload to the manufacturer)
 
-## Montaż (BOM, stencil)
+Typical contents:
+- Copper layers: `YR-F_Cu.gbr`, `YR-B_Cu.gbr`
+- Solder masks: `YR-F_Mask.gbr`, `YR-B_Mask.gbr`
+- Solder paste (stencil): `YR-F_Paste.gbr`, `YR-B_Paste.gbr` (if assembled on both sides)
+- Silkscreen: `YR-F_Silkscreen.gbr`, `YR-B_Silkscreen.gbr`
+- Board outline: `YR-Edge_Cuts.gbr`
+- Drill files: `YR-PTH.drl`, `YR-NPTH.drl` (+ maps `*_drl_map.gbr`)
+- Job file: `YR-job.gbrjob` (fabrication metadata from KiCad)
 
-- BOM: `YR.csv` – lista elementów do kompletacji.
-- Stencil: jeżeli montaż SMD, użyj odpowiednich plików `*_Paste.gbr` do wykonania szablonu pasty.
-- Uwaga: upewnij się co do orientacji elementów (diody, elektrolity, układy scalone) zgodnie ze znacznikami na warstwie opisowej.
+Recommended order parameters (typical, confirm with your manufacturer):
+- Layer count: 2
+- Material: FR4, 1.6 mm thickness (standard)
+- Copper: 1 oz (35 µm)
+- Solder mask: green (or other) + white silkscreen
+- Finish: HAL Sn/Pb or lead-free HAL/ENIG per preference
+- Minimum tracks/clearances/hole sizes: as per project DRC settings (check in KiCad)
 
-## Licencja i zastrzeżenia
+## Assembly (BOM, stencil)
 
-- Licencja: `GPL-3.0`
+- BOM: `YR.csv` — parts list for procurement.
+- Stencil: for SMD assembly, use the `*_Paste.gbr` files to manufacture a solder paste stencil.
+- Note: ensure component orientations (diodes, electrolytics, ICs) match the polarity/orientation markers on the silkscreen.
 
-Miłego korzystania z projektu YoRadio PCB!
+## Generating fabrication outputs (from KiCad)
+
+If you make changes and want to refresh the outputs:
+1. PCB Editor → File → Plot…
+   - Format: Gerber
+   - Select layers: F_Cu, B_Cu, F_Mask, B_Mask, F_Paste, B_Paste, F_Silkscreen, B_Silkscreen, Edge.Cuts
+   - Ensure the Plot format options meet your fab’s requirements (e.g., use vector font).
+2. PCB Editor → File → Fabrication Outputs → Drill Files…
+   - Generate `PTH.drl` and `NPTH.drl`.
+3. Verify completeness and correctness in the Gerber Viewer (KiCad).
+4. Zip the files and send them to your manufacturer.
+
+## Previews
+
+Sample photos and screenshots:
+- `img/PCB1.jpg`
+- `img/PCB2.jpg`
+- `img/Screenshot_2025-11-09_18-42-12.png`
+- `img/Screenshot_2025-11-09_18-42-12_mod.png`
+- Real board photos: `img/20251109_183416.jpg`, `img/20251109_183430.jpg`, `img/20251109_183437.jpg`, `img/20251109_183449.jpg`
+
+Example embeds:
+![PCB – view 1](img/PCB1.jpg)
+![PCB – view 2](img/PCB2.jpg)
+
+## Versioning and backups
+
+- Current version: v0.4 (directory `YR_v0.4/`, archive `YR_v0.4.zip`).
+- Automatic backups: `YR-backups/` (with date and time).
+- Recommendation: after significant changes, regenerate Gerber/Drill files and tag as a new version (e.g., v0.5).
+
+## License and disclaimers
+
+- License: there is no explicit license file in the repository — if you intend to share/use the project, choose and add a `LICENSE` (e.g., CERN-OHL, MIT, other).
+- Disclaimer: the project is provided in good faith, without warranty. Use at your own risk; verify the design against your requirements and standards.
+
+## Contributing and issue reporting
+
+- Want to improve the project or add a feature? Open a Pull Request.
+- Bugs/notes: create an Issue in the repository and include:
+  - problem description,
+  - project version (e.g., v0.4),
+  - screenshots/photos or log files (if applicable).
+
+Enjoy using the YoRadio PCB project!
