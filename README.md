@@ -96,6 +96,12 @@ Recommended order parameters (typical, confirm with your manufacturer):
 - Stencil: for SMD assembly, use the `*_Paste.gbr` files to manufacture a solder paste stencil.
 - Note: ensure component orientations (diodes, electrolytics, ICs) match the polarity/orientation markers on the silkscreen.
 
+## Programming the ESP32 Module
+
+The ESP32 module is programmed using a USB–UART interface with a 3.3V logic level.
+After connecting the interface and powering the board, press two buttons: RST and BOOT, then release them in the following order: first RST, then BOOT.
+This will start the bootloader, which allows the module to be programmed directly from the Arduino IDE
+
 ## Generating fabrication outputs (from KiCad)
 
 If you make changes and want to refresh the outputs:

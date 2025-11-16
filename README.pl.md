@@ -59,6 +59,12 @@ Gotowe do wysyłki do fabryki (wersja v0.4):
 - Stencil: jeżeli montaż SMD, użyj odpowiednich plików `*_Paste.gbr` do wykonania szablonu pasty.
 - Uwaga: upewnij się co do orientacji elementów (diody, elektrolity, układy scalone) zgodnie ze znacznikami na warstwie opisowej.
 
+## Programowanie układu ESP32
+
+Układ ESP32 programuje się przy użyciu interfejsu USB - UART z napięciem 3.3V
+Po podłączeniu interfejsu i zasilania do płytki, należy nacisnąć 2 przyciski, RST i BOOT, następnie zwolinić je w kolejności RST, następnie BOOT. Uruchomi się wtedy bootloader, który umożliwia zaprogramowanie układu bezpośrednio z Arduino IDE. 
+
+
 ## Licencja i zastrzeżenia
 
 - Licencja: `GPL-3.0`
